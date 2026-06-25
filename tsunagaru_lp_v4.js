@@ -26,4 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  const planTabs = document.querySelectorAll('.plan-tab');
+  const planPanels = document.querySelectorAll('.plan-panel');
+  planTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      planTabs.forEach((t) => {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      planPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== tab.dataset.tab;
+      });
+    });
+  });
 });
