@@ -47,14 +47,14 @@ nav{
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:13px;color:var(--muted);letter-spacing:.04em;transition:color .15s}
 .nav-links a:hover{color:var(--cream)}
-.nav-cta{
+a.nav-cta{
   font-size:13px;font-weight:500;
-  color:var(--bg);background:var(--cream);
+  color:#0e0f0d;background:#f0ead8;
   padding:9px 22px;border-radius:3px;
   letter-spacing:.06em;
   transition:opacity .15s;
 }
-.nav-cta:hover{opacity:.85}
+a.nav-cta:hover{opacity:.85;color:#0e0f0d}
 
 .nav-toggle{
   display:none;
