@@ -256,7 +256,7 @@ h1{
   font-weight:600;line-height:1.25;
   color:var(--cream);
 }
-.works-head p{font-size:14px;color:var(--muted);max-width:320px;line-height:1.8}
+.works-head p{font-size:14px;color:var(--muted);max-width:380px;line-height:1.8}
 
 /* メイン実績：ブラウザモックアップ（Gold Owing Group） */
 .work-featured{margin-bottom:56px}
