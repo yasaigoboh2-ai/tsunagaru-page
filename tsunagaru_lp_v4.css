@@ -1,0 +1,540 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0f0d;
+  --bg2:#141510;
+  --cream:#f0ead8;
+  --cream2:#e8dfc8;
+  --green:#2d5a3d;
+  --green2:#3d7a53;
+  --text:#f0ead8;
+  --muted:rgba(240,234,216,.52);
+  --line:rgba(240,234,216,.1);
+  --line2:rgba(240,234,216,.18);
+  --gog-gold:#cdaa6d;
+  --gog-gold2:#f0dba8;
+  --max:1080px;
+  --pad:clamp(20px,4vw,52px);
+}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - var(--pad)*2));margin:0 auto}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+  background:rgba(14,15,13,.75);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Shippori Mincho',serif;
+  font-size:17px;font-weight:600;
+  letter-spacing:.08em;
+  color:var(--cream);
+}
+.nav-logo img{width:26px;height:26px;border-radius:4px;display:block}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;color:var(--muted);letter-spacing:.04em;transition:color .15s}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{
+  font-size:13px;font-weight:500;
+  color:var(--bg);background:var(--cream);
+  padding:9px 22px;border-radius:3px;
+  letter-spacing:.06em;
+  transition:opacity .15s;
+}
+.nav-cta:hover{opacity:.85}
+
+.nav-toggle{
+  display:none;
+  width:32px;height:32px;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:0;
+}
+.nav-toggle span{
+  display:block;width:20px;height:1px;background:var(--cream);
+  transition:transform .25s,opacity .25s;
+}
+.nav-toggle.is-active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.is-active span:nth-child(2){opacity:0}
+.nav-toggle.is-active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ── HERO ── */
+#hero{
+  height:100svh;min-height:600px;
+  position:relative;display:flex;
+  align-items:flex-end;
+  padding-bottom:clamp(48px,7vw,96px);
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80');
+  background-size:cover;background-position:center 30%;
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 28% 18%,rgba(0,0,0,0) 0%,rgba(0,0,0,.4) 100%);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,
+    rgba(14,15,13,.25) 0%,
+    rgba(14,15,13,.55) 55%,
+    rgba(14,15,13,.94) 100%);
+}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;
+  opacity:.05;mix-blend-mode:overlay;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.9) 1px,transparent 0);
+  background-size:3px 3px;
+}
+.hero-inner{
+  position:relative;z-index:1;
+  width:100%;padding:0 var(--pad);
+}
+.hero-kicker{
+  font-size:11px;letter-spacing:.2em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.hero-kicker::before{content:'';display:block;width:32px;height:1px;background:var(--muted)}
+h1{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(34px,5.5vw,72px);
+  font-weight:600;line-height:1.25;
+  letter-spacing:-.01em;
+  color:var(--cream);
+  margin-bottom:28px;
+  max-width:760px;
+}
+.hero-sub{
+  font-size:clamp(14px,1.6vw,17px);
+  color:var(--muted);line-height:1.9;
+  max-width:520px;margin-bottom:44px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  font-size:14px;font-weight:500;letter-spacing:.06em;
+  color:var(--bg);background:var(--cream);
+  padding:15px 36px;border-radius:3px;
+  display:inline-block;
+  transition:opacity .15s,transform .1s;
+}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-ghost{
+  font-size:14px;color:var(--muted);
+  padding:15px 24px;
+  border:1px solid var(--line2);border-radius:3px;
+  display:inline-block;
+  transition:border-color .15s,color .15s;
+}
+.btn-ghost:hover{border-color:var(--cream2);color:var(--cream)}
+
+.hero-scroll{
+  position:absolute;right:var(--pad);bottom:28px;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:.22em;color:var(--muted);
+}
+.hero-scroll span{width:1px;height:36px;display:block;background:linear-gradient(to bottom,var(--muted),transparent)}
+
+/* ── PROBLEM ── */
+#problem{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  border-bottom:1px solid var(--line);
+}
+.prob-inner{max-width:var(--max);margin:0 auto}
+.section-label{
+  font-size:11px;letter-spacing:.18em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:48px;
+  display:flex;align-items:center;gap:14px;
+}
+.section-label::before{content:'';display:block;width:28px;height:1px;background:var(--muted)}
+.prob-lead{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(20px,3vw,32px);
+  font-weight:500;line-height:1.7;
+  color:var(--cream);
+  max-width:680px;margin-bottom:64px;
+}
+.prob-lead .faded{color:var(--muted)}
+.prob-list{
+  display:flex;flex-direction:column;gap:0;
+  border-top:1px solid var(--line);
+}
+.prob-item{
+  display:flex;align-items:baseline;gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.prob-num{font-size:11px;color:var(--muted);letter-spacing:.1em;min-width:32px}
+.prob-text{font-size:15px;color:rgba(240,234,216,.75);line-height:1.7}
+.prob-text strong{color:var(--cream);font-weight:500}
+
+/* ── WORKS (制作実績) ── */
+#works{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  background:var(--bg2);
+  border-bottom:1px solid var(--line);
+}
+.works-inner{max-width:var(--max);margin:0 auto}
+.works-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:64px;flex-wrap:wrap;gap:24px;
+}
+.works-head h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(24px,3.5vw,40px);
+  font-weight:600;line-height:1.25;
+  color:var(--cream);
+}
+.works-head p{font-size:14px;color:var(--muted);max-width:320px;line-height:1.8}
+
+/* メイン実績：ブラウザモックアップ（Gold Owing Group） */
+.work-featured{margin-bottom:56px}
+.browser-mock{
+  display:block;border-radius:10px;overflow:hidden;
+  background:#1a1c18;border:1px solid var(--line2);
+  box-shadow:0 30px 80px -24px rgba(0,0,0,.65);
+  transition:transform .35s,box-shadow .35s;
+}
+.browser-mock:hover{transform:translateY(-4px);box-shadow:0 40px 90px -20px rgba(0,0,0,.75)}
+.browser-mock:focus-visible{outline:2px solid var(--cream2);outline-offset:4px}
+.browser-chrome{
+  display:flex;align-items:center;gap:8px;
+  padding:12px clamp(14px,2vw,18px);
+  background:#1f211b;
+  border-bottom:1px solid rgba(240,234,216,.08);
+}
+.chrome-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.chrome-dot.r{background:#e0605a}
+.chrome-dot.y{background:#e0b65a}
+.chrome-dot.g{background:#5ab97c}
+.chrome-url{
+  flex:1;display:flex;align-items:center;gap:7px;
+  margin:0 12px;padding:6px 14px;
+  background:rgba(240,234,216,.06);border-radius:20px;
+  font-size:12px;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.chrome-lock{
+  width:8px;height:7px;flex-shrink:0;position:relative;
+  border:1.3px solid var(--muted);border-radius:1px;
+}
+.chrome-lock::before{
+  content:'';position:absolute;left:50%;top:-5px;transform:translateX(-50%);
+  width:6px;height:5px;border:1.3px solid var(--muted);border-bottom:none;border-radius:3px 3px 0 0;
+}
+.chrome-open{font-size:11px;color:var(--muted);letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.browser-viewport{position:relative;aspect-ratio:16/9;background:#0c0d0b;overflow:hidden}
+.browser-viewport img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.5) saturate(1.05);
+  transition:transform .6s;
+}
+.browser-mock:hover .browser-viewport img{transform:scale(1.02)}
+.gog-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;
+  background:linear-gradient(180deg,rgba(8,7,2,.2),rgba(8,7,2,.6));
+}
+.gog-emblem{
+  width:clamp(40px,6vw,54px);height:clamp(40px,6vw,54px);border-radius:50%;
+  border:1px solid var(--gog-gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.04em;
+  color:var(--gog-gold2);margin-bottom:14px;
+}
+.gog-name{font-size:11px;letter-spacing:.22em;color:var(--gog-gold2);margin-bottom:18px}
+.gog-copy{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(19px,3vw,32px);color:#f5ecd8;line-height:1.5;margin-bottom:16px;
+}
+.gog-shops{font-size:11px;letter-spacing:.08em;color:rgba(245,236,216,.68)}
+
+.work-featured-meta{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.work-badge{
+  display:inline-block;font-size:11px;letter-spacing:.14em;
+  color:var(--bg);background:var(--cream);
+  padding:4px 12px;border-radius:2px;
+  margin-bottom:12px;
+}
+.work-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:22px;font-weight:600;color:var(--cream);
+  margin-bottom:6px;
+}
+.work-desc{font-size:13px;color:var(--muted);max-width:560px;line-height:1.8}
+.work-link{
+  font-size:13px;color:var(--cream);
+  border-bottom:1px solid var(--line2);padding-bottom:2px;
+  white-space:nowrap;flex-shrink:0;
+  transition:border-color .15s,opacity .15s;
+}
+.work-link:hover{border-color:var(--cream)}
+
+/* サブカード */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.work-sub{
+  position:relative;border-radius:6px;overflow:hidden;
+  aspect-ratio:4/3;background:#1a1c18;
+}
+.work-sub img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.75);
+  transition:filter .3s,transform .4s;
+}
+.work-sub:hover img{filter:brightness(.9);transform:scale(1.02)}
+.work-sub-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:20px 22px;
+  background:linear-gradient(to top,rgba(14,15,13,.9),transparent);
+}
+.work-sub-title{font-size:15px;font-weight:500;color:var(--cream);margin-bottom:3px}
+.work-sub-cat{font-size:11px;color:var(--muted);letter-spacing:.08em}
+
+/* ── FEATURES ── */
+#features{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  border-bottom:1px solid var(--line);
+}
+.features-inner{max-width:var(--max);margin:0 auto}
+.feat-list{display:flex;flex-direction:column}
+.feat-row{
+  display:grid;grid-template-columns:100px 1fr 1fr;
+  gap:40px;align-items:start;
+  padding:44px 0;
+  border-top:1px solid var(--line);
+}
+.feat-row:last-child{border-bottom:1px solid var(--line)}
+.feat-num{
+  font-size:13px;color:var(--muted);
+  letter-spacing:.1em;padding-top:4px;
+}
+.feat-name{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(18px,2.2vw,24px);
+  font-weight:600;color:var(--cream);
+  line-height:1.3;
+}
+.feat-name small{
+  display:block;font-family:'Noto Sans JP',sans-serif;
+  font-size:11px;font-weight:400;
+  color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-top:6px;
+}
+.feat-desc{font-size:14px;color:var(--muted);line-height:1.9}
+
+/* ── PLANS ── */
+#plans{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  background:var(--bg2);
+  border-bottom:1px solid var(--line);
+}
+.plans-inner{max-width:var(--max);margin:0 auto}
+.plans-head{margin-bottom:64px}
+.plans-head h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(24px,3.5vw,40px);
+  font-weight:600;color:var(--cream);
+  margin-bottom:14px;
+}
+.plans-head p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.8}
+.plan-list{display:flex;flex-direction:column}
+.plan-row{
+  display:grid;grid-template-columns:200px 180px 1fr;
+  gap:32px;align-items:start;
+  padding:36px 0;
+  border-top:1px solid var(--line);
+}
+.plan-row:last-child{border-bottom:1px solid var(--line)}
+.plan-row.featured .plan-name{color:var(--cream)}
+.plan-name{font-size:15px;font-weight:500;color:var(--cream)}
+.plan-tag{
+  display:inline-block;font-size:10px;letter-spacing:.1em;
+  color:var(--bg);background:var(--cream2);
+  padding:3px 8px;border-radius:2px;margin-left:8px;
+  vertical-align:middle;
+}
+.plan-price{
+  font-family:'Shippori Mincho',serif;
+  font-size:24px;font-weight:600;color:var(--cream);
+  letter-spacing:-.01em;
+}
+.plan-price span{font-size:13px;font-weight:400;color:var(--muted)}
+.plan-items{font-size:13px;color:var(--muted);line-height:2}
+.plan-items li{list-style:none;display:flex;gap:8px}
+.plan-items li::before{content:'—';color:var(--line2);flex-shrink:0}
+
+/* ── TARGETS ── */
+#targets{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  border-bottom:1px solid var(--line);
+}
+.targets-inner{max-width:var(--max);margin:0 auto}
+.target-list{display:flex;flex-direction:column;margin-top:56px}
+.target-row{
+  display:grid;grid-template-columns:180px 1fr 240px;
+  gap:32px;align-items:baseline;
+  padding:24px 0;border-top:1px solid var(--line);
+}
+.target-row:last-child{border-bottom:1px solid var(--line)}
+.target-type{font-size:15px;font-weight:500;color:var(--cream)}
+.target-pain{font-size:14px;color:var(--muted);line-height:1.7}
+.target-hook{font-size:13px;color:var(--green2);letter-spacing:.02em;text-align:right}
+
+/* ── PROCESS ── */
+#process{
+  padding:clamp(80px,10vw,140px) var(--pad);
+  background:var(--bg2);
+  border-bottom:1px solid var(--line);
+}
+.process-inner{max-width:var(--max);margin:0 auto}
+.proc-list{margin-top:56px;display:flex;flex-direction:column}
+.proc-row{
+  display:grid;grid-template-columns:140px 1fr;
+  gap:40px;padding:32px 0;
+  border-top:1px solid var(--line);align-items:baseline;
+}
+.proc-row:last-child{border-bottom:1px solid var(--line)}
+.proc-step{font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.proc-step span{display:block;font-size:12px;color:rgba(240,234,216,.3);margin-top:4px}
+.proc-body h3{font-size:16px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.proc-body p{font-size:14px;color:var(--muted);line-height:1.8}
+
+/* ── CTA ── */
+#cta{
+  padding:clamp(100px,12vw,160px) var(--pad);
+  position:relative;overflow:hidden;
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80');
+  background-size:cover;background-position:center;
+  filter:brightness(.18) saturate(.6);
+}
+.cta-inner{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  gap:60px;align-items:center;
+}
+.cta-left h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(24px,3.5vw,42px);
+  font-weight:600;color:var(--cream);
+  line-height:1.3;margin-bottom:18px;
+}
+.cta-left p{font-size:15px;color:var(--muted);line-height:1.9;max-width:480px}
+.cta-right{display:flex;flex-direction:column;gap:18px;min-width:220px}
+.cta-main{
+  font-size:16px;font-weight:600;letter-spacing:.06em;
+  color:var(--bg);background:var(--cream);
+  padding:20px 40px;border-radius:3px;
+  text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 18px 44px -14px rgba(240,234,216,.4);
+  transition:opacity .15s,transform .15s,box-shadow .15s;
+}
+.cta-main:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 22px 50px -12px rgba(240,234,216,.5)}
+.cta-main-arrow{transition:transform .15s}
+.cta-main:hover .cta-main-arrow{transform:translateX(3px)}
+.cta-channels{display:flex;flex-direction:column;gap:10px}
+.cta-channel{
+  font-size:12px;color:var(--muted);
+  display:flex;align-items:baseline;gap:8px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+  transition:color .15s,border-color .15s;
+}
+.cta-channel:hover{color:var(--cream);border-color:var(--line2)}
+.cta-channel-label{
+  font-size:10px;letter-spacing:.12em;color:var(--green2);
+  flex-shrink:0;min-width:38px;
+}
+.cta-note{font-size:12px;color:var(--muted);text-align:center;line-height:1.8}
+.cta-note strong{color:var(--cream2)}
+
+/* ── FOOTER ── */
+footer{
+  padding:36px var(--pad);
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:16px;
+  font-size:12px;color:var(--muted);
+}
+.footer-logo{
+  display:flex;align-items:center;gap:9px;
+  font-family:'Shippori Mincho',serif;
+  font-size:15px;color:var(--cream);letter-spacing:.06em;
+}
+.footer-logo img{width:20px;height:20px;border-radius:3px;display:block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-toggle{display:flex}
+  .nav-links{
+    position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(14,15,13,.97);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+    max-height:0;overflow:hidden;opacity:0;
+    transition:max-height .3s ease,opacity .25s ease;
+    padding:0 var(--pad);
+  }
+  .nav-links.is-open{max-height:320px;opacity:1;padding:12px var(--pad) 22px}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .nav-cta{
+    margin-top:14px;text-align:center;border-bottom:none!important;
+  }
+
+  .hero-scroll{display:none}
+
+  .feat-row{grid-template-columns:60px 1fr;gap:16px}
+  .feat-desc{grid-column:2}
+
+  .plan-row{grid-template-columns:1fr 1fr;gap:16px}
+  .plan-items{grid-column:1/-1}
+
+  .target-row{grid-template-columns:1fr;gap:8px}
+  .target-hook{text-align:left}
+
+  .proc-row{grid-template-columns:1fr;gap:10px}
+
+  .cta-inner{grid-template-columns:1fr;gap:40px}
+  .cta-right{min-width:0}
+
+  .work-grid{grid-template-columns:1fr}
+  .work-featured-meta{flex-direction:column;align-items:flex-start}
+
+  .chrome-open{display:none}
+}
+@media(max-width:540px){
+  .browser-viewport{aspect-ratio:4/3}
+  h1{font-size:32px}
+  .gog-emblem{margin-bottom:10px}
+  .gog-name{margin-bottom:12px}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{text-align:center}
+  .browser-chrome{padding:10px 12px}
+  .chrome-url{font-size:11px;margin:0 8px;padding:5px 10px}
+  .cta-main{padding:18px 28px}
+}
