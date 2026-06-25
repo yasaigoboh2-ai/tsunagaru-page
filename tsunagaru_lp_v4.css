@@ -156,7 +156,7 @@ h1{
 }
 .stats-inner{
   max-width:var(--max);margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;grid-template-columns:repeat(3,1fr);
 }
 .stat-item{
   padding:0 24px;text-align:center;
@@ -346,34 +346,6 @@ h1{
 }
 .work-sub-title{font-size:15px;font-weight:500;color:var(--cream);margin-bottom:3px}
 .work-sub-cat{font-size:11px;color:var(--muted);letter-spacing:.08em}
-
-/* ── VOICE (お客様の声) ── */
-#voice{
-  padding:clamp(80px,10vw,140px) var(--pad);
-  background:var(--bg2);
-  border-bottom:1px solid var(--line);
-}
-.voice-inner{max-width:var(--max);margin:0 auto}
-.voice-head{margin-bottom:56px}
-.voice-head h2{
-  font-family:'Shippori Mincho',serif;
-  font-size:clamp(24px,3.5vw,40px);
-  font-weight:600;line-height:1.4;color:var(--cream);
-}
-.voice-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.voice-row{
-  display:grid;grid-template-columns:160px 1fr 220px;
-  gap:40px;padding:40px 0;align-items:start;
-  border-bottom:1px solid var(--line);
-}
-.voice-type{font-size:15px;font-weight:500;color:var(--cream)}
-.voice-type span{display:block;font-size:12px;color:var(--muted);margin-top:2px;font-weight:400}
-.voice-quote{
-  font-size:14px;color:rgba(240,234,216,.78);line-height:1.9;
-  border-left:1px solid var(--line2);padding-left:22px;
-}
-.voice-result{font-size:13px;color:var(--green2);line-height:1.6}
-.voice-disclaimer{margin-top:28px;font-size:11px;color:rgba(240,234,216,.35)}
 
 /* ── FEATURES ── */
 #features{
@@ -614,11 +586,9 @@ footer{
   .bf-arrow{flex-direction:row;justify-content:center;padding:8px 0}
   .bf-arrow-icon{transform:rotate(90deg);display:inline-block}
 
-  .stats-inner{grid-template-columns:repeat(2,1fr);row-gap:28px}
-  .stat-item:nth-child(odd){border-left:none;padding-left:0}
-  .stat-item:nth-child(even){border-left:1px solid var(--line);padding-left:24px}
-
-  .voice-row{grid-template-columns:1fr;gap:14px}
+  .stats-inner{grid-template-columns:1fr}
+  .stat-item{border-left:none!important;padding:20px 0;border-top:1px solid var(--line)}
+  .stat-item:first-child{border-top:none;padding-top:0}
 
   .feat-grid{grid-template-columns:1fr;row-gap:40px}
 
