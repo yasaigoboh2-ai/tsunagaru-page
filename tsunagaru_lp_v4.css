@@ -469,14 +469,14 @@ h1{
 .targets-inner{max-width:var(--max);margin:0 auto}
 .target-list{display:flex;flex-direction:column;margin-top:56px}
 .target-row{
-  display:grid;grid-template-columns:180px 1fr 240px;
+  display:grid;grid-template-columns:180px 1fr 300px;
   gap:32px;align-items:baseline;
   padding:24px 0;border-top:1px solid var(--line);
 }
 .target-row:last-child{border-bottom:1px solid var(--line)}
 .target-type{font-size:15px;font-weight:500;color:var(--cream)}
 .target-pain{font-size:14px;color:var(--muted);line-height:1.7}
-.target-hook{font-size:13px;color:var(--green2);letter-spacing:.02em;text-align:right}
+.target-hook{font-size:12px;color:var(--green2);letter-spacing:.02em;text-align:right;white-space:nowrap}
 
 /* ── PROCESS ── */
 #process{
@@ -627,7 +627,7 @@ footer{
   .plan-items{grid-column:1/-1}
 
   .target-row{grid-template-columns:1fr;gap:8px}
-  .target-hook{text-align:left}
+  .target-hook{text-align:left;white-space:normal}
 
   .proc-row{grid-template-columns:1fr;gap:10px}
 
