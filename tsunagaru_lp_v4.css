@@ -593,27 +593,6 @@ footer{
 }
 .footer-logo img{width:20px;height:20px;border-radius:3px;display:block}
 
-/* ── CUSTOM CURSOR (デスクトップのみ) ── */
-.cursor-dot,.cursor-ring{display:none}
-.has-custom-cursor{cursor:none}
-.has-custom-cursor a,.has-custom-cursor button{cursor:none}
-.has-custom-cursor .cursor-dot,.has-custom-cursor .cursor-ring{
-  display:block;position:fixed;top:0;left:0;z-index:9999;
-  border-radius:50%;pointer-events:none;
-  transform:translate(-50%,-50%);
-}
-.has-custom-cursor .cursor-dot{
-  width:8px;height:8px;background:#f0ead8;
-}
-.has-custom-cursor .cursor-ring{
-  width:32px;height:32px;background:transparent;
-  border:1px solid #f0ead8;
-  transition:width .25s ease,height .25s ease,background-color .25s ease,border-color .25s ease;
-}
-.has-custom-cursor .cursor-ring.is-hover{
-  width:54px;height:54px;background:rgba(240,234,216,.12);
-}
-
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   .nav-toggle{display:flex}

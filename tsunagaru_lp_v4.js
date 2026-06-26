@@ -94,39 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal, .js-stagger').forEach((el) => revealObserver.observe(el));
   }
 
-  // ── カスタムカーソル（デスクトップのみ） ──
-  const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (isDesktopPointer && !prefersReducedMotion) {
-    document.body.classList.add('has-custom-cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorRing = document.querySelector('.cursor-ring');
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursorDot.style.left = `${mouseX}px`;
-      cursorDot.style.top = `${mouseY}px`;
-    });
-
-    const animateRing = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      cursorRing.style.left = `${ringX}px`;
-      cursorRing.style.top = `${ringY}px`;
-      requestAnimationFrame(animateRing);
-    };
-    animateRing();
-
-    document.querySelectorAll('a, button, summary, .plan-tab').forEach((el) => {
-      el.addEventListener('mouseenter', () => cursorRing.classList.add('is-hover'));
-      el.addEventListener('mouseleave', () => cursorRing.classList.remove('is-hover'));
-    });
-  }
-
   // ── ヒーロー背景：ネットワークアニメーション ──
   const canvas = document.getElementById('hero-canvas');
   if (canvas) {
