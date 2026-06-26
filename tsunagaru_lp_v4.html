@@ -36,25 +36,30 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
+  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-grain"></div>
   <div class="hero-inner">
-    <p class="hero-kicker">Web制作サービス / 小規模店舗・個人事業主向け</p>
+    <p class="hero-kicker hero-fade" style="--d:0s">Web制作サービス / 小規模店舗・個人事業主向け</p>
     <div class="hero-layout">
       <div class="hero-main">
         <h1>
-          <span class="hero-line">予約も、販売も、</span>
-          <span class="hero-rule"></span>
-          <span class="hero-line">ひとつのページで<br>受け取れる。</span>
+          <span class="hero-line">
+            <span class="hero-fade hero-word" style="--d:.2s">予約も、</span><span class="hero-fade hero-word" style="--d:.4s">販売も、</span>
+          </span>
+          <span class="hero-rule hero-fade" style="--d:.6s"></span>
+          <span class="hero-line">
+            <span class="hero-fade hero-word" style="--d:.8s">ひとつのページで</span><br><span class="hero-fade hero-word" style="--d:1s">受け取れる。</span>
+          </span>
         </h1>
         <div class="hero-btns">
-          <div class="hero-btn-group">
+          <div class="hero-btn-group hero-fade" style="--d:1.4s">
             <a href="#cta" class="btn-primary">まず相談してみる</a>
             <span class="hero-btn-note">初回3店舗限定・特別価格</span>
           </div>
-          <a href="#works" class="btn-ghost">制作実績を見る</a>
+          <a href="#works" class="btn-ghost hero-fade" style="--d:1.5s">制作実績を見る</a>
         </div>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats hero-fade" style="--d:1.2s">
         <div class="hero-stat">
           <div class="hero-stat-num">飲食・サロン<span>・作家など</span></div>
           <div class="hero-stat-label">対応業種</div>
@@ -76,8 +81,8 @@
 <!-- PROBLEM -->
 <section id="problem">
   <div class="prob-inner">
-    <div class="section-label">こんなお悩みはありませんか</div>
-    <p class="prob-lead">
+    <div class="section-label reveal">こんなお悩みはありませんか</div>
+    <p class="prob-lead reveal">
       Instagramは動いているのに、<br>
       <span class="faded">予約や購入まで</span>つながっていない。<br>
       <span class="faded">そこで止まっているお店が、</span>まだ多い。
@@ -85,7 +90,7 @@
     <div class="bf-diagram">
       <div class="bf-before">
         <div class="bf-label">今の状態（Before）</div>
-        <div class="bf-items">
+        <div class="bf-items js-stagger">
           <div class="bf-item">
             <span class="bf-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="17" r="5" stroke="currentColor" stroke-width="1.4"/><circle cx="22" cy="10" r="1.2" fill="currentColor"/></svg></span>
             <span class="bf-text">Instagram</span>
@@ -118,7 +123,7 @@
       <div class="bf-after">
         <div class="bf-after-frame">
           <span class="bf-after-frame-label">ツナガルページ</span>
-          <div class="bf-after-items">
+          <div class="bf-after-items js-stagger">
             <div class="bf-after-item">
               <span class="bf-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 16 16 7l10 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 14v12h14V14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
               <span class="bf-text">お店紹介</span>
@@ -142,14 +147,14 @@
 <!-- WORKS -->
 <section id="works">
   <div class="works-inner">
-    <div class="section-label">制作実績</div>
-    <div class="works-head">
+    <div class="section-label reveal">制作実績</div>
+    <div class="works-head reveal">
       <h2>こんなサイトを<br>作っています。</h2>
       <p>Gold Owing Groupでは、<br>グループ全体から7店舗の個別ページまでをまとめて制作。<br>飲食店・サロン・ハンドメイド作家など、<br>業種を問わずご相談いただけます。</p>
     </div>
 
     <!-- メイン実績：Gold Owing Group（ブラウザモックアップ） -->
-    <div class="work-featured">
+    <div class="work-featured reveal">
       <div class="browser-mock">
         <div class="browser-chrome">
           <span class="chrome-dot r"></span>
@@ -175,7 +180,7 @@
       </div>
     </div>
 
-    <div class="work-grid">
+    <div class="work-grid js-stagger">
       <div class="work-sub">
         <img src="gog_bar105.jpg" alt="Gold Owing Group Bar105 店舗ページ" loading="lazy">
         <div class="work-sub-label">
@@ -190,6 +195,13 @@
           <div class="work-sub-cat">個別店舗ページ + 予約導線</div>
         </div>
       </div>
+      <a class="work-sub" href="/handmade_demo.html">
+        <img src="work_handmade_demo.jpg" alt="hana to ito ブランドサイト" loading="lazy">
+        <div class="work-sub-label">
+          <div class="work-sub-title">hana to ito</div>
+          <div class="work-sub-cat">ハンドメイド作家 / ブランドサイト</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -197,11 +209,11 @@
 <!-- FEATURES -->
 <section id="features">
   <div class="features-inner">
-    <div class="section-label">サービスの特徴</div>
-    <div class="features-head">
+    <div class="section-label reveal">サービスの特徴</div>
+    <div class="features-head reveal">
       <h2>必要な機能を<br>ひとつずつ。</h2>
     </div>
-    <div class="feat-grid">
+    <div class="feat-grid js-stagger">
       <div class="feat-card">
         <div class="feat-index">01</div>
         <div class="feat-icon">
@@ -261,19 +273,19 @@
 <!-- PLANS -->
 <section id="plans">
   <div class="plans-inner">
-    <div class="section-label">料金プラン</div>
-    <div class="plans-head">
+    <div class="section-label reveal">料金プラン</div>
+    <div class="plans-head reveal">
       <h2>必要な機能から<br>選べます。</h2>
       <p>BASEやSquare予約など既存のサービスを組み合わせることで、低コスト・短納期でご提供しています。</p>
     </div>
 
-    <div class="plan-tabs" role="tablist">
+    <div class="plan-tabs reveal" role="tablist">
       <button class="plan-tab is-active" data-tab="intro" role="tab" aria-selected="true">初回限定価格</button>
       <button class="plan-tab" data-tab="regular" role="tab" aria-selected="false">通常価格</button>
     </div>
 
     <div class="plan-panel" data-panel="intro">
-      <div class="plan-list">
+      <div class="plan-list js-stagger">
         <div class="plan-row">
           <div><div class="plan-name">ライトプラン</div></div>
           <div class="plan-price">5〜8<span>万円</span></div>
@@ -314,7 +326,7 @@
     </div>
 
     <div class="plan-panel" data-panel="regular" hidden>
-      <div class="plan-list">
+      <div class="plan-list js-stagger">
         <div class="plan-row">
           <div><div class="plan-name">ライトプラン</div></div>
           <div class="plan-price">8〜12<span>万円</span></div>
@@ -359,8 +371,8 @@
 <!-- TARGETS -->
 <section id="targets">
   <div class="targets-inner">
-    <div class="section-label">こういうお店に声をかけています</div>
-    <div class="target-list">
+    <div class="section-label reveal">こういうお店に声をかけています</div>
+    <div class="target-list js-stagger">
       <div class="target-row">
         <div class="target-type">飲食店・カフェ</div>
         <div class="target-pain">Googleで検索されても予約まで辿り着けない。DMで予約を受けていて管理が大変。</div>
@@ -393,8 +405,8 @@
 <!-- PROCESS -->
 <section id="process">
   <div class="process-inner">
-    <div class="section-label">制作の流れ</div>
-    <div class="proc-list">
+    <div class="section-label reveal">制作の流れ</div>
+    <div class="proc-list js-stagger">
       <div class="proc-row">
         <div class="proc-step">STEP 01<span>〜3日</span></div>
         <div class="proc-body"><h3>無料ヒアリング・現状診断</h3><p>今のSNS・サイトの状況をお聞きし、改善できる導線を無料でお伝えします。オンライン・LINE・対面どちらでも。</p></div>
@@ -422,11 +434,11 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="faq-inner">
-    <div class="section-label">よくあるご質問</div>
-    <div class="faq-head">
+    <div class="section-label reveal">よくあるご質問</div>
+    <div class="faq-head reveal">
       <h2>よくある<br>ご質問。</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list js-stagger">
       <details class="faq-item">
         <summary>制作期間はどのくらいかかりますか？<span class="faq-toggle"></span></summary>
         <div class="faq-answer">プラン内容により異なりますが、目安として最短3〜4週間ほどです。素材のご準備状況や予約システムの設定内容によって前後しますので、ヒアリング時にスケジュールをご提示します。</div>
@@ -455,11 +467,11 @@
 <section id="cta">
   <div class="cta-bg"></div>
   <div class="cta-inner">
-    <div class="cta-left">
+    <div class="cta-left reveal">
       <h2>まず、現状を<br>聞かせてください。</h2>
       <p>費用の話は後でいい。<br>今のInstagramやホームページを<br>見せてもらえれば、改善できる点を<br>無料でお伝えします。<br><br>相談したからといって、<br>発注を急かすことはしません。</p>
     </div>
-    <div class="cta-right">
+    <div class="cta-right reveal">
       <a href="mailto:sakinomaturi@gmail.com" class="cta-main"><span>無料で相談する</span><span class="cta-main-arrow">→</span></a>
       <div class="cta-channels">
         <a href="mailto:sakinomaturi@gmail.com" class="cta-channel"><span class="cta-channel-label">MAIL</span>sakinomaturi@gmail.com</a>
@@ -473,6 +485,9 @@
   <div class="footer-logo"><img src="tsunagaru_logo.png" alt="TSUNAGARU PAGE"> TSUNAGARU PAGE</div>
   <div>© <span id="year">2026</span> ツナガルページ　｜　特定商取引法に基づく表記</div>
 </footer>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 
 <script src="tsunagaru_lp_v4.js"></script>
 </body>
