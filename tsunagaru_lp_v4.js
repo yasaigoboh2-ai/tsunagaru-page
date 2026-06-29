@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   staggerGroups.forEach((group) => {
     Array.from(group.children).forEach((child, i) => {
       child.classList.add('reveal-child');
-      child.style.setProperty('--rd', `${Math.min(i, 6) * 0.1}s`);
+      child.style.setProperty('--rd', `${Math.min(i, 8) * 0.08}s`);
     });
   });
 
@@ -94,6 +94,65 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal, .js-stagger').forEach((el) => revealObserver.observe(el));
   }
 
+  // ── スマホ固定CTA：#ctaが見えている間は隠す ──
+  const mobileCta = document.getElementById('mobile-cta');
+  const ctaSection = document.getElementById('cta');
+  if (mobileCta && ctaSection) {
+    const mobileCtaObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          mobileCta.classList.toggle('is-hidden', entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 }
+    );
+    mobileCtaObserver.observe(ctaSection);
+  }
+
+  // ── カスタムカーソル（デスクトップのみ） ──
+  const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (isDesktopPointer && !prefersReducedMotion) {
+    document.body.classList.add('has-custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    });
+
+    const animateRing = () => {
+      ringX += (mouseX - ringX) * 0.2;
+      ringY += (mouseY - ringY) * 0.2;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+      requestAnimationFrame(animateRing);
+    };
+    animateRing();
+
+    document.addEventListener('mouseover', (e) => {
+      const interactive = e.target.closest('a, button, summary, .plan-tab');
+      if (interactive) {
+        cursorRing.classList.add('is-hover');
+        cursorRing.classList.remove('is-text');
+        return;
+      }
+      const textEl = e.target.closest('p, h1, h2, h3, h4, span, li, small, blockquote');
+      if (textEl) {
+        cursorRing.classList.remove('is-hover');
+        cursorRing.classList.add('is-text');
+      } else {
+        cursorRing.classList.remove('is-hover', 'is-text');
+      }
+    });
+  }
+
   // ── ヒーロー背景：ネットワークアニメーション ──
   const canvas = document.getElementById('hero-canvas');
   if (canvas) {
@@ -109,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const NODE_COLOR = '240,234,216';
     const LINK_DIST = 150;
 
-    const nodeCount = () => (window.innerWidth <= 768 ? 18 : 55);
+    const nodeCount = () => (window.innerWidth <= 768 ? 30 : 60);
 
     const createNodes = () => {
       const count = nodeCount();
@@ -119,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vx: (Math.random() - 0.5) * 0.18,
         vy: (Math.random() - 0.5) * 0.18,
         r: 2 + Math.random() * 2,
-        a: 0.2 + Math.random() * 0.2,
+        a: 0.15 + Math.random() * 0.15,
       }));
     };
 
