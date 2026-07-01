@@ -109,114 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileCtaObserver.observe(ctaSection);
   }
 
-  // ── ヒーロー背景：ネットワークアニメーション ──
-  const canvas = document.getElementById('hero-canvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
+  // ── ヒーロー背景：スクロールに応じた微細なパララックス ──
+  const heroMark = document.querySelector('.hero-mark');
+  if (heroMark && !prefersReducedMotion) {
     const hero = document.getElementById('hero');
-    let nodes = [];
-    let width = 0;
-    let height = 0;
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let running = !prefersReducedMotion;
-    let rafId = null;
-
-    const NODE_COLOR = '240,234,216';
-    const LINK_DIST = 150;
-
-    const nodeCount = () => (window.innerWidth <= 768 ? 30 : 60);
-
-    const createNodes = () => {
-      const count = nodeCount();
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
-        r: 2 + Math.random() * 2,
-        a: 0.15 + Math.random() * 0.15,
-      }));
-    };
-
-    const resize = () => {
+    let ticking = false;
+    const update = () => {
       const rect = hero.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      createNodes();
+      const progress = Math.min(Math.max(1 - rect.bottom / (rect.height + window.innerHeight), 0), 1);
+      heroMark.style.transform = `translateY(${progress * -24}px)`;
+      ticking = false;
     };
-
-    const step = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      nodes.forEach((n) => {
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > width) n.vx *= -1;
-        if (n.y < 0 || n.y > height) n.vy *= -1;
-      });
-
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i];
-          const b = nodes[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < LINK_DIST) {
-            const lineAlpha = 0.08 + (1 - dist / LINK_DIST) * 0.07;
-            ctx.strokeStyle = `rgba(${NODE_COLOR},${lineAlpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
       }
-
-      nodes.forEach((n) => {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${NODE_COLOR},${n.a})`;
-        ctx.fill();
-      });
-
-      if (running) rafId = requestAnimationFrame(step);
-    };
-
-    resize();
-    if (running) {
-      rafId = requestAnimationFrame(step);
-    } else {
-      step();
-    }
-
-    let resizeTimer = null;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 200);
-    });
-
-    const heroObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (prefersReducedMotion) return;
-          if (entry.isIntersecting && !running) {
-            running = true;
-            rafId = requestAnimationFrame(step);
-          } else if (!entry.isIntersecting && running) {
-            running = false;
-            if (rafId) cancelAnimationFrame(rafId);
-          }
-        });
-      },
-      { threshold: 0 }
-    );
-    heroObserver.observe(hero);
+    }, { passive: true });
+    update();
   }
 });
