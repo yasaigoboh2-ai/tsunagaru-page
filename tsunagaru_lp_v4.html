@@ -15,10 +15,11 @@
 <link rel="icon" href="tsunagaru_logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tsunagaru_lp_v4.css">
 </head>
 <body>
+<a class="skip-link" href="#main">メインコンテンツへ</a>
 
 <nav>
   <div class="nav-logo"><img src="tsunagaru_logo.png" alt="TSUNAGARU PAGE"> TSUNAGARU PAGE</div>
@@ -33,6 +34,7 @@
   </div>
 </nav>
 
+<main id="main">
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
@@ -437,23 +439,23 @@
     <div class="section-label reveal">制作の流れ</div>
     <div class="proc-list js-stagger">
       <div class="proc-row">
-        <div class="proc-step">STEP 01<span>〜3日</span></div>
+        <div class="proc-step" data-num="01">STEP 01<span>〜3日</span></div>
         <div class="proc-body"><h3>無料ヒアリング・現状診断</h3><p>今のSNS・サイトの状況をお聞きし、改善できる導線を無料でお伝えします。オンライン・LINE・対面どちらでも。</p></div>
       </div>
       <div class="proc-row">
-        <div class="proc-step">STEP 02<span>〜2日</span></div>
+        <div class="proc-step" data-num="02">STEP 02<span>〜2日</span></div>
         <div class="proc-body"><h3>プラン・お見積り提示</h3><p>内容・料金・スケジュールをご提示。納得してからご契約なので、押し売りはしません。</p></div>
       </div>
       <div class="proc-row">
-        <div class="proc-step">STEP 03<span>〜5日</span></div>
+        <div class="proc-step" data-num="03">STEP 03<span>〜5日</span></div>
         <div class="proc-body"><h3>素材・情報のご提供</h3><p>写真・ロゴ・商品情報・営業時間などをご用意ください。素材がない場合もご相談ください。</p></div>
       </div>
       <div class="proc-row">
-        <div class="proc-step">STEP 04<span>1〜3週間</span></div>
+        <div class="proc-step" data-num="04">STEP 04<span>1〜3週間</span></div>
         <div class="proc-body"><h3>制作・設定</h3><p>ホームページ・ショップ・予約システムを構築します。途中経過もこまめにご確認いただけます。</p></div>
       </div>
       <div class="proc-row">
-        <div class="proc-step">STEP 05<span>〜5日</span></div>
+        <div class="proc-step" data-num="05">STEP 05<span>〜5日</span></div>
         <div class="proc-body"><h3>確認・修正・公開</h3><p>内容を確認いただき、修正後に公開。操作説明と運用マニュアルをお渡しして完了です。</p></div>
       </div>
     </div>
@@ -530,6 +532,8 @@
     <div class="footer-operator">運営：畠山真乃介 / 先の祭り（SAKI NO MATSURI）</div>
   </div>
 </footer>
+
+</main>
 
 <a href="#cta" class="mobile-cta" id="mobile-cta">無料で診断してもらう</a>
 
